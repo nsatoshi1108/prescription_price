@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pharmacy_code: 1
+  name: MyString
+  postal: MyString
+  address: MyString
+  tel: MyString
+
+two:
+  pharmacy_code: 1
+  name: MyString
+  postal: MyString
+  address: MyString
+  tel: MyString

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  original_price: 1
+  generic_price: 1
+  classification: MyString
+  standard: MyString
+  usage: MyString
+
+two:
+  code: MyString
+  name: MyString
+  original_price: 1
+  generic_price: 1
+  classification: MyString
+  standard: MyString
+  usage: MyString
