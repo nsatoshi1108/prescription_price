@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prescription_id: 1
+  medicine_id: 1
+  dose: 1
+  dose_method_id: 1
+
+two:
+  prescription_id: 1
+  medicine_id: 1
+  dose: 1
+  dose_method_id: 1
