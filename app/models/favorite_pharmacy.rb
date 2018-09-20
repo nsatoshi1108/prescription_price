@@ -1,0 +1,2 @@
+class FavoritePharmacy < ApplicationRecord
+end

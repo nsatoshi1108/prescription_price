@@ -1,0 +1,2 @@
+class PharmacyUser < ApplicationRecord
+end
