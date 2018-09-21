@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180821015536) do
+ActiveRecord::Schema.define(version: 20180920091120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20180821015536) do
   create_table "dose_methods", force: :cascade do |t|
     t.string "number_of_doses"
     t.string "take_point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_pharmacies", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "pharmacy_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,6 +65,20 @@ ActiveRecord::Schema.define(version: 20180821015536) do
     t.integer "addition_id"
   end
 
+  create_table "pharmacy_users", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "password_digest", null: false
+    t.integer "pharmacy_code", null: false
+    t.integer "pharmacy_id", null: false
+    t.string "tel", null: false
+    t.string "fax"
+    t.string "email", null: false
+    t.string "image"
+    t.string "movie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "prescription_medicines", force: :cascade do |t|
     t.integer "prescription_id"
     t.integer "medicine_id"
@@ -70,6 +91,18 @@ ActiveRecord::Schema.define(version: 20180821015536) do
   create_table "prescriptions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "number_of_medicine"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "password_digest", null: false
+    t.string "email", null: false
+    t.string "birthday", null: false
+    t.string "postal", null: false
+    t.string "address", null: false
+    t.string "tel", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

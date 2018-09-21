@@ -1,0 +1,2 @@
+module PharmacyUsersHelper
+end
