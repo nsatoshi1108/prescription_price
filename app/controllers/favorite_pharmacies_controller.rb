@@ -1,0 +1,2 @@
+class FavoritePharmaciesController < ApplicationController
+end
