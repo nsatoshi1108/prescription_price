@@ -1,3 +1,35 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  font-size: 62.5%;
+}
+
+.user_fields_parent{
+  text-align: center;
+}
+
+.user_fields_inner{
+  padding:2rem;
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.user_fields_inner tr{
+  border: solid 1px #fff;
+  height:100px;
+  padding: 1rem;
+}
+
+.user_fields_inner th{
+  background-color: #d3d3d3;
+  text-align: left;
+}
+
+.user_fields_inner td{
+  width:300px;
+  text-align: left;
+}
+
+.user_fields_inner input[type="text"],[type="password"],[type="date"]{
+  margin-left:3rem;
+  background-color: #d3d3d3;
+  width:300px;
+}
