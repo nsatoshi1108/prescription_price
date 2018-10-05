@@ -11,47 +11,58 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="user_fields_parent">
+  <div class="user_fields_inner">
+    <table>
+      <tr>
+        <th><%= form.label :name,"名前" %></th>
+        <td><%= form.text_field :name %></td>
+      </tr>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_area :password %>
-  </div>
+      <tr>
+        <th><%= form.label :password,"パスワード" %></th>
+        <td><%= form.password_field :password %></td>
+      </tr>
 
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.text_area :password_confirmation %>
-  </div>
+      <tr>
+        <th><%= form.label :password_confirmation,"確認用パスワード" %></th>
+        <td><%= form.password_field :password_confirmation %></td>
+      </tr>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_area :email %>
-  </div>
+      <tr>
+        <th><%= form.label :email, "メールアドレス" %></th>
+        <td><%= form.text_field :email %></td>
+      </tr>
 
-  <div class="field">
-    <%= form.label :birthday %>
-    <%= form.text_area :birthday %>
-  </div>
+      <tr>
+        <th><%= form.label :birthday ,"誕生日"%></th>
+        <td><%= form.date_field :birthday %></td>
+      </tr>
 
-  <div class="field">
-    <%= form.label :postal %>
-    <%= form.text_area :postal %>
-  </div>
+      <tr>
+        <th><%= form.label :postal,"郵便番号 〒" %></th>
+        <td><%= form.text_field :postal %></td>
+      </tr>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_area :address %>
-  </div>
+      <tr>
+        <th><%= form.label :address ,"住所"%></th>
+        <td><%= form.text_field :address %></td>
+      </tr>
 
-  <div class="field">
-    <%= form.label :tel %>
-    <%= form.text_area :tel %>
+      <tr>
+        <th><%= form.label :tel ,"電話番号"%></th>
+        <td><%= form.text_field :tel %></td>
+      </tr>
+    </table>
   </div>
+  <br>
+  <div class="user_fields_inner">
+    <table>
+      <tr>
+        <%= form.submit %>
+      </tr>
+    </table>
+  </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
