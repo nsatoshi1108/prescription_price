@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920091120) do
+ActiveRecord::Schema.define(version: 20181007160723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "additions", force: :cascade do |t|
-    t.string "name"
-    t.integer "score"
+    t.string "name", null: false
+    t.integer "score", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "dose_methods", force: :cascade do |t|
     t.string "number_of_doses"
-    t.string "take_point"
+    t.string "take_point", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,32 +37,32 @@ ActiveRecord::Schema.define(version: 20180920091120) do
   end
 
   create_table "medicines", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
     t.integer "original_price"
     t.integer "generic_price"
     t.string "classification"
-    t.string "standard"
     t.string "usage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code", null: false
+    t.string "name", null: false
+    t.string "standard", null: false
   end
 
   create_table "pharmacies", force: :cascade do |t|
-    t.integer "pharmacy_code"
-    t.string "name"
-    t.string "postal"
-    t.string "address"
-    t.string "tel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pharmacy_code", null: false
+    t.string "name", null: false
+    t.string "postal", null: false
+    t.string "address", null: false
+    t.string "tel", null: false
   end
 
   create_table "pharmacy_additions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pharmacy_id"
-    t.integer "addition_id"
+    t.integer "pharmacy_id", null: false
+    t.integer "addition_id", null: false
   end
 
   create_table "pharmacy_users", force: :cascade do |t|
@@ -80,17 +80,17 @@ ActiveRecord::Schema.define(version: 20180920091120) do
   end
 
   create_table "prescription_medicines", force: :cascade do |t|
-    t.integer "prescription_id"
-    t.integer "medicine_id"
-    t.integer "dose"
-    t.integer "dose_method_id"
+    t.integer "prescription_id", null: false
+    t.integer "medicine_id", null: false
+    t.integer "dose", null: false
+    t.integer "dose_method_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "prescriptions", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "number_of_medicine"
+    t.integer "user_id", null: false
+    t.integer "number_of_medicine", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
