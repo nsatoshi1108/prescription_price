@@ -10,4 +10,4 @@
 
 
 ## autocomplete機能追加
-> 検索窓に薬品名を入れた時に自動補完してくれるようにgemを追加 [参考にしたサイト](http://techblog.kyamanak.com/entry/2018/06/03/170603/)
+> 検索窓に薬品名を入れた時に自動補完してくれるようにgemを追加 [参考にしたサイト](http://techblog.kyamanak.com/entry/2018/06/03/170603)
