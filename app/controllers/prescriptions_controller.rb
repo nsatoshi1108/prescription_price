@@ -1,6 +1,7 @@
 class PrescriptionsController < ApplicationController
   before_action :set_prescription, only: [:show, :edit, :update, :destroy]
   before_action :return_login, only: [:index, :edit, :show, :destroy]
+  autocomplete :medicine, :name, full: true # オートコンプリート用に追加
 
   # GET /prescriptions
   # GET /prescriptions.json
@@ -15,6 +16,7 @@ class PrescriptionsController < ApplicationController
 
   # GET /prescriptions/new
   def new
+    @medicines = Medicine.all
     if params[:back]
       @prescription = Prescription.new(prescription_params)
     else
