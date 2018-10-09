@@ -1,3 +1,3 @@
 class Medicine < ApplicationRecord
-  has_many :prescriptions_medicines
+  has_many :prescription_medicines, inverse_of: :medicine
 end

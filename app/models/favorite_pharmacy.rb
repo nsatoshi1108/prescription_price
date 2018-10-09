@@ -1,4 +1,4 @@
 class FavoritePharmacy < ApplicationRecord
-  belongs_to :user
-  belongs_to :pharmacy
+  belongs_to :user, inverse_of: :favorite_pharmacies
+  belongs_to :pharmacy, inverse_of: :favorite_pharmacies
 end
