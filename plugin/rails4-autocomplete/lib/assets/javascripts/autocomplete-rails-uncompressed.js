@@ -91,7 +91,7 @@
                 jQuery(update_elements[key]).val(ui.item ? data[key] : "");
             }
         },
-        minLength: 2,
+        minLength: 1,
         focus: function() {
           // prevent value inserted on focus
           return false;
