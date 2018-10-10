@@ -11,12 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :prescription_content %>
-  </div>
+  <!-- <div class="field">
+    <%= form.label "薬品名" %>
+    <%= autocomplete_field_tag "prescription[medicine_name][]", nil,  autocomplete_medicine_name_prescriptions_path %>
+    <%= form.label "錠数" %>
+    <%= number_field_tag 'prescription[prescription_medicine][dose][]', id: :prescription_content %>
+  </div> -->
+
+  <!-- <div class="field"> -->
+    <!-- <%= form.label "薬品名" %> -->
+    <%= autocomplete_field_tag "prescription[medicine_name][]", nil,  autocomplete_medicine_name_prescriptions_path %>
+    <!-- <%= form.label "錠数" %>
+    <%= number_field_tag 'prescription[prescription_medicine][dose][]', id: :prescription_content %>
+  </div> -->
+
+  <table class="table table-striped table-bordered table-hover">
+    <tbody>
+      <tr>
+        <th>薬品名</th>
+        <th>錠数</th>
+        <th>飲み方</th>
+        <th>日数</th>
+        <th>削除</th>
+
+      </tr>
+      <%= form.nested_fields_for :prescription_medicines, wrapper_tag: :tr do |f| %>
+      <td><%= f.autocomplete_field :medicine_id,  autocomplete_medicine_name_prescriptions_path, 'min-length' => 1, class: 'form-control' %></td>
+      <td><%= f.number_field :dose, class: 'form-control' %></td>
+      <td><%= f.autocomplete_field :dose_method_id,  autocomplete_dose_method_take_point_prescriptions_path, :minLength=>1, class: 'form-control' %></td>
+      <td><%= f.number_field :date, class: 'form-control' %></td>
+      <td><%= f.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %></td>
+      <% end %>
+    </tbody>
+  </table>
+  <%= form.add_nested_fields_link :prescription_medicines, '薬を追加', class: 'btn btn-primary', role: 'button' %>
+
 
   <div class="actions">
-    <%= form.submit %>
+    <br>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

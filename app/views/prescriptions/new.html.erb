@@ -9,8 +9,6 @@
       <td><%= medicine.original_price %></td>
       <td><%= medicine.generic_price %></td>
       <td><%= medicine.standard %></td>
-
     </tr>
   <% end %>
-  <%= autocomplete_field_tag 'medicine[name]', nil,  autocomplete_medicine_name_prescriptions_path %>
 </tbody>

@@ -13,9 +13,11 @@
 //= require jquery/dist/jquery.js
 //= require rails-ujs
 //= require jquery
+//= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
 //= require autocomplete-rails
+//= require nested_form_fields
 //= require bootstrap/dist/js/bootstrap.min
 //= require_tree .
 

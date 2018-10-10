@@ -25,9 +25,19 @@ class PrescriptionsController < ApplicationController
   end
 
   def confirm
-    @prescription = Prescription.new(prescription_params)
-    @prescription.user_id = current_user.id
-    render :new if @prescription.invalid?
+    @prescription = Prescription.new()
+    # prescriptions_medicine_medicines
+    @medicines = []
+    @doses = []
+    prescription_params[:prescription_medicines_attributes].each do |key, medicine|
+      if medicine[:medicine_id].present? || medicine[:dose].present?
+        @medicines << Medicine.find_by(name: medicine[:medicine_id])
+        @doses << medicine[:dose]
+      end
+    end
+
+    # @prescription.user_id = current_user.id if @prescription.invalid?
+    # render :new if @prescription.invalid?
   end
 
   # GET /prescriptions/1/edit
@@ -83,8 +93,14 @@ class PrescriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prescription_params
-      params.require(:prescription).permit(:content)
+      params.require(:prescription).permit(
+        prescription_medicines_attributes: [:id, :medicine_id, :dose, :dose_method_id, :_destroy]
+      )
     end
+
+    # def medicine_params
+    #   params.require(:medicine).permit(:name, :number)
+    # end
 
     def return_login
       return redirect_to new_session_path unless logged_in?
