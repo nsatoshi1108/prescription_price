@@ -1,0 +1,24 @@
+<h3>以下の内容で、送信する。</h3>
+
+<%= form_with(model: @prescription, url: prescriptions_path, local: true) do |form| %>
+
+  <%= hidden_field_tag :medicine_name, @medicines[0].name %>
+  <%= hidden_field_tag :medicine_number, @doses[0] %>
+
+  <p>薬品名:<%= @medicines[0].name %></p>
+  <p>先発薬価:<%= @medicines[0].original_price %></p>
+  <p>後発薬価:<%= @medicines[0].generic_price %></p>
+  <p>錠数:<%= @doses[0] %></p>
+
+  <p>薬品名:<%= @medicines[1].name %></p>
+  <p>先発薬価:<%= @medicines[1].original_price %></p>
+  <p>後発薬価:<%= @medicines[1].generic_price %></p>
+  <p>錠数:<%= @doses[1] %></p>
+
+  <%= form.submit "登録する", class: 'btn btn-info' %>
+<% end %>
+
+<%= form_with(model: @prescription, url: new_prescription_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :medicine_name %>
+  <%= form.submit "もどる", name: 'back', class: 'btn btn-default' %>
+<% end %>

@@ -39,6 +39,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
@@ -53,4 +56,18 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+<<<<<<< HEAD
 gem 'bcrypt', '3.1.11'
+=======
+# has_secure_passwordを使えるようになる
+gem 'bcrypt', '3.1.11'
+
+# 薬品名をmedicine modelの nameカラムの中から自動補完するために3つのgem install
+# ローカルのactive_merchantをインストールするように記述(minLengthを１にカスタマイズするため)
+gem 'rails4-autocomplete', :path => 'plugin/rails4-autocomplete'
+gem 'jquery-ui-rails'
+gem 'jquery-rails'
+
+# form のタグの動的追加
+gem 'nested_form_fields'
+>>>>>>> upstream/master
