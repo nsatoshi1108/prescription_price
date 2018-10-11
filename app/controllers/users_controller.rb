@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
+  def index
+  end
+
   def new
     @user = User.new
   end
@@ -9,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to new_blog_path, notice: "ようこそ！#{@user.name}さん"
+      redirect_to user_path(@user.id), notice: "ようこそ！#{@user.name}さん"
     else
       render 'new'
     end

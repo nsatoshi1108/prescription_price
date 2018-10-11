@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920091120) do
+ActiveRecord::Schema.define(version: 20181007092423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 20180920091120) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "password_digest", null: false
     t.string "email", null: false
     t.string "birthday", null: false
     t.string "postal", null: false
@@ -105,6 +104,7 @@ ActiveRecord::Schema.define(version: 20180920091120) do
     t.string "tel", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
