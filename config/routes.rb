@@ -8,8 +8,11 @@ Rails.application.routes.draw do
       get :autocomplete_dose_method_take_point
     end
   end
+>>>>>>> upstream/master
 
-  resources :users, only: [:new, :create, :show, :edit, :update] do
+  resources :session, only: [:new, :create, :destroy]
+
+  resources :users, only: [:index, :new, :create, :show, :edit, :update] do
     collection do
       post  :confirm
     end
