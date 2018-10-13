@@ -61,6 +61,8 @@ gem 'bcrypt', '3.1.11'
 
 #ユーザーログイン機能を作成するためにdeviseを導入する
 gem 'devise'
+#開発環境でメール送信機能を確認するためにletter_opener_webを追記
+gem 'letter_opener_web'
 
 # 薬品名をmedicine modelの nameカラムの中から自動補完するために3つのgem install
 # ローカルのactive_merchantをインストールするように記述(minLengthを１にカスタマイズするため)
