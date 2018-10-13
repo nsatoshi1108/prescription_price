@@ -14,8 +14,11 @@ Rails.application.routes.draw do
     end
   end
 
+  #devise〜ログイン完了後リダイレクトさせるリンク先を指定
+  root 'users#index'
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
-  
+
 end
