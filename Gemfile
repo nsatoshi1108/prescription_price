@@ -59,6 +59,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # has_secure_passwordを使えるようになる
 gem 'bcrypt', '3.1.11'
 
+#ユーザーログイン機能を作成するためにdeviseを導入する
+gem 'devise'
+
 # 薬品名をmedicine modelの nameカラムの中から自動補完するために3つのgem install
 # ローカルのactive_merchantをインストールするように記述(minLengthを１にカスタマイズするため)
 gem 'rails4-autocomplete', :path => 'plugin/rails4-autocomplete'
