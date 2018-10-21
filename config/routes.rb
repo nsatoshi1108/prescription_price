@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  # #devise追加機能にuser/indexがない為アクションを追加
+  # resources :users, only: [:index, :show]
+
   resources :prescriptions do
     collection do
       post  :confirm
@@ -8,18 +12,9 @@ Rails.application.routes.draw do
       get :autocomplete_dose_method_take_point
     end
   end
->>>>>>> upstream/master
-
-  resources :session, only: [:new, :create, :destroy]
-
-  resources :users, only: [:index, :new, :create, :show, :edit, :update] do
-    collection do
-      post  :confirm
-    end
-  end
 
   #devise〜ログイン完了後リダイレクトさせるリンク先を指定
-  root 'users#index'
+  root 'prescriptions#index'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

@@ -103,6 +103,6 @@ class PrescriptionsController < ApplicationController
     # end
 
     def return_login
-      return redirect_to new_session_path unless logged_in?
+      return redirect_to new_user_session_path unless user_signed_in?
     end
 end
