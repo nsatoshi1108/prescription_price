@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       post  :confirm
       get :autocomplete_medicine_name
       get :autocomplete_dose_method_take_point
+      get :map
     end
   end
 
