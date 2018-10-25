@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 ようこそ<%= current_user.name%>さん<br>
-  <div>
-    プロフィールを編集する<%= link_to '編集する', edit_user_registration_path, class: 'btn btn-primary'%>
-  </div>
-<br>
+<div>
+  プロフィールを編集する<%= link_to '編集する', edit_user_registration_path, class: 'btn btn-primary'%>
+</div><br>
 
 <%= link_to '処方箋の薬を登録する', new_prescription_path, class: 'btn btn-primary'%>
