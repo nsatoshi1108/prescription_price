@@ -1,22 +1,27 @@
 <h1>ここから薬局の地図を検索</h1>
 
 <div id="map"></div>
-<%= button_tag type: 'button', onclick: 'address_marker()'%>
 
+<%= button_tag type: 'button', onclick: 'address_marker()'%>
+<!-- <% @pharmacies = Pharmacy.all%>
+<% @pharmacies.each do |pharmacy|%>
+  <% pharmac = pharmacy.address%>
+<% end%> -->
 <script>
+console.log(gon.pharmacies)
 var geocoder;
 var map;
 var markers = [];
 var info_window = [];
 
-var pharmacies = [
-  {title: "東京都江戸川区篠崎町一丁目30-13",content:"自宅"},
-  {title: "千葉県八千代市勝田台２丁目１２番地３レクセルマンション　勝田台２０７",content: "実家"},
-  {title: "一ノ江駅",content: "バイト先駅"},
-  {title: "東大島",content: "勤務先駅"},
-  {title: "大島駅",content: "勤務先駅"},
-  {title: "西大島",content: "透析クリニック最寄駅"},
-];
+// var pharmacies = [
+//   {title: "東京都江戸川区篠崎町一丁目30-13",content:"自宅"},
+//   {title: "千葉県八千代市勝田台２丁目１２番地３レクセルマンション　勝田台２０７",content: "実家"},
+//   {title: "一ノ江駅",content: "バイト先駅"},
+//   {title: "東大島",content: "勤務先駅"},
+//   {title: "大島駅",content: "勤務先駅"},
+//   {title: "西大島",content: "透析クリニック最寄駅"},
+// ];
 
 
 if( navigator.geolocation ){

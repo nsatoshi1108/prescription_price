@@ -72,3 +72,5 @@ gem 'jquery-rails'
 
 # form のタグの動的追加
 gem 'nested_form_fields'
+
+gem 'gon'

@@ -87,7 +87,8 @@ class PrescriptionsController < ApplicationController
   end
 
   def map
-    @prescriptions = Prescription.all
+    gon.pharmacies = Pharmacy.all
+
   end
 
   private
