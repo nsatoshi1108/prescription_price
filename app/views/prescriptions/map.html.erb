@@ -1,58 +1,93 @@
 <h1>ここから薬局の地図を検索</h1>
 
 <div id="map"></div>
+<%= button_tag type: 'button', onclick: 'address_marker()'%>
 
 <script>
-  var map;
-  var markers = [];
+var geocoder;
+var map;
+var markers = [];
+var info_window = [];
 
-  if( navigator.geolocation ){
-    alert( "あなたの端末では、現在位置を取得することができます。" ) ;
+var pharmacies = [
+  {title: "東京都江戸川区篠崎町一丁目30-13",content:"自宅"},
+  {title: "千葉県八千代市勝田台２丁目１２番地３レクセルマンション　勝田台２０７",content: "実家"},
+  {title: "一ノ江駅",content: "バイト先駅"},
+  {title: "東大島",content: "勤務先駅"},
+  {title: "大島駅",content: "勤務先駅"},
+  {title: "西大島",content: "透析クリニック最寄駅"},
+];
 
-    //現在地取得機能
-    navigator.geolocation.getCurrentPosition(
-      function get_position(position){
-        //緯度経度を定義し位置情報をgoogle_map引き渡す
-        var current_lat = position.coords.latitude;
-        var current_lng = position.coords.longitude;
-        var current_positoin = new google.maps.LatLng(current_lat, current_lng) ;
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: current_positoin,
-          zoom: 15
+
+if( navigator.geolocation ){
+  alert( "あなたの端末では、現在位置を取得することができます。" ) ;
+  //現在地取得機能
+  navigator.geolocation.getCurrentPosition(function init_map(position){
+      //緯度経度を定義し位置情報をgoogle_map引き渡す
+    geocoder = new google.maps.Geocoder();
+    var current_lat = position.coords.latitude;
+    var current_lng = position.coords.longitude;
+    var current_latlng = new google.maps.LatLng(current_lat ,current_lng);
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: current_latlng,
+      zoom: 15,
+    });//map作成
+
+    var current_marker = new google.maps.Marker({
+      position: {lat: current_lat, lng:current_lng},
+      map: map
+    })//現在地のマーカー
+
+    var circleOptions = {
+      map: map,
+      center: new google.maps.LatLng(current_lat, current_lng),
+      radius: 500,//1km
+      strokeColor: "#009933",
+      strokeOpacity: 1,
+      strokeWeight: 1,
+      fillColor: "#00ffcc",
+      fillOpacity: 0.35
+    };
+
+    circle = new google.maps.Circle(circleOptions);
+    },function(error){
+      alert("エラー");
+    }
+  );
+}else{
+// 現在位置を取得できない場合の処理
+alert( "あなたの端末では、現在位置を取得できません。" ) ;
+}
+
+
+function address_marker(){
+  pharmacies.forEach(function(val,idx,arr){
+
+    geocoder.geocode( { address: val.title }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
         });
 
-        var positions = [
-          {title:'自宅', location: {lat: 35.710388, lng: 139.906582}},
-          {title:'セントラル薬局本八幡店', location: {lat: 35.723428,lng: 139.927206}},
+        info_window = new google.maps.InfoWindow({
+          content: `${val.content}`
+        });
 
-        ];
+        google.maps.event.addListener(marker, 'click', function() {
+          info_window.setContent('<div><strong>' + val.content + '</strong><br>');
+          info_window.open(map, this);
+        });
 
-        var bounds = new google.maps.LatLngBounds();
+        markers.push(marker);
 
-        for (var i = 0; i < positions.length; i++){
-          var position = positions[i].location;
-          var title = positions[i].title;
-          var marker = new google.maps.Marker({
-            map: map,
-            position: position,
-            title: title,
-            animation: google.maps.Animation.DROP,
-            id: i //配列の順番をidにする
-          });
-          markers.push(marker); //生成されたマーカーを保存
-          bounds.extend(markers[i].position); //全マーカーが収まるように地図の表示範囲を指定
-        }
-        map.fitBounds(bounds);
-
-      },
-      function(error){
-        alert("エラー");
+      } else {
+        alert("Geocode was not successful for the following reason: " + status);
       }
-
-    );
-  }else{
-    // 現在位置を取得できない場合の処理
-    alert( "あなたの端末では、現在位置を取得できません。" ) ;
-  }
+    });
+  })
+}
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD758_1X2aD76zlJuMYn8yWTOIkyVWC6Fo&callback=get_position"type="text/javascript"></script>
