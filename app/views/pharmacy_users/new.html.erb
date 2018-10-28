@@ -1,0 +1,37 @@
+<h1>Pharmacy Sign up</h1>
+
+<% if @pharmacy_user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@pharmacy_user.errors.count, "error") %> prohibited this @pharmacy_user from being saved:</h2>
+    <ul>
+    <% @pharmacy_user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @pharmacy_user, local: true) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :pharmacy_code %>
+  <%= f.text_field :pharmacy_code %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :tel %>
+  <%= f.text_field :tel %>
+
+  <%= f.label :fax %>
+  <%= f.text_field :fax %><br>
+
+  <%= f.submit "Create my account" %>
+<% end %>
