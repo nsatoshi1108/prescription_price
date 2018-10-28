@@ -4,7 +4,7 @@ require "csv"
 
 #foreachは、ファイル（hoge.csv）の各行を引数として、ブロック(do~endまでを範囲とする『引数のかたまり』)を繰り返し実行する
 #rowには、読み込まれた行が代入される
-CSV.foreach('db/pharmacy_tokyo.csv') do |row|
+CSV.foreach('db/pharmacy_tokyo_english_address.csv') do |row|
 
   pharmacy = Pharmacy.create(pharmacy_code: row[0],name: row[1],postal: row[2],address: row[4],tel: row[5])
   addition_score = 0
